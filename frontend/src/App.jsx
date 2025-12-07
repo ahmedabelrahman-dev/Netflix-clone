@@ -4,7 +4,7 @@ import HomePage from './pages/home/HomePage.jsx';
 import LoginPage from './pages/LoginPage.jsx';
 import SignUpPage from './pages/SignUpPage.jsx';
 import NotFoundPage from './pages/404.jsx';
-// import Footer from './components/Footer.jsx';
+import Footer from './components/Footer.jsx';
 import { Toaster } from 'react-hot-toast';
 
 function App() {
@@ -16,7 +16,7 @@ function App() {
         <Route path="/signup" element={<SignUpPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
-      {/* <Footer /> */}
+      <Footer />
       <Toaster />
     </>
   );
