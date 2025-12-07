@@ -124,6 +124,14 @@ export async function logout(req, res) {
 export async function authCheck(req, res) {
   try {
     console.log('req.user:', req.user);
+
+    // Disable caching
+    res.set({
+      'Cache-Control': 'no-store',
+      Pragma: 'no-cache',
+      Expires: '0',
+    });
+
     res.status(200).json({ success: true, user: req.user });
   } catch (error) {
     console.log('Error in authCheck controller', error.message);
