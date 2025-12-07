@@ -1,10 +1,16 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
+
 import HomePage from './pages/home/HomePage.jsx';
 import LoginPage from './pages/LoginPage.jsx';
 import SignUpPage from './pages/SignUpPage.jsx';
 import NotFoundPage from './pages/404.jsx';
+import WatchPage from './pages/WatchPage';
+import SearchPage from './pages/SearchPage';
+import SearchHistoryPage from './pages/SearchHistoryPage';
+
 import Footer from './components/Footer.jsx';
+
 import { Toaster } from 'react-hot-toast';
 import { useAuthStore } from './store/authUser.js';
 import { Navigate } from 'react-router-dom';
@@ -38,6 +44,18 @@ function App() {
         <Route
           path="/signup"
           element={!user ? <SignUpPage /> : <Navigate to={'/'} />}
+        />
+        <Route
+          path="/watch/:id"
+          element={user ? <WatchPage /> : <Navigate to={'/login'} />}
+        />
+        <Route
+          path="/search"
+          element={user ? <SearchPage /> : <Navigate to={'/login'} />}
+        />
+        <Route
+          path="/history"
+          element={user ? <SearchHistoryPage /> : <Navigate to={'/login'} />}
         />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
