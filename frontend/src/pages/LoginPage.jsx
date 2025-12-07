@@ -1,19 +1,19 @@
 import React from 'react';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-// import { useAuthStore } from '../store/authUser';
+import { useAuthStore } from '../store/authUser';
 
 const LoginPage = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  //  const { login, isLoggingIn } = useAuthStore();
+  const { login, isLoggingIn } = useAuthStore();
 
-  let isLoggingIn = false; // Placeholder for login state
+  // let isLoggingIn = false; // Placeholder for login state
 
   const handleLogin = (e) => {
     e.preventDefault();
-    // login({ email, password });
+    login({ email, password });
   };
   return (
     <div className="h-screen w-full hero-bg">
