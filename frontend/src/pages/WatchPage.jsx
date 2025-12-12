@@ -104,7 +104,7 @@ const WatchPage = () => {
         <div className="max-w-6xl mx-auto">
           <Navbar />
           <div className="text-center mx-auto px-4 py-8 h-full mt-40">
-            <h2 className="text-2xl sm:text-5xl font-bold">
+            <h2 className="text-4xl md:text-5xl font-extrabold">
               Content not found 😥
             </h2>
           </div>
@@ -127,7 +127,7 @@ const WatchPage = () => {
 
   return (
     <div className="bg-black min-h-screen text-white">
-      <div className="mx-auto container px-4 py-8 h-full">
+      <div className="max-w-6xl mx-auto px-4 md:px-2">
         <Navbar />
 
         {/* trailer navigation */}
@@ -170,7 +170,7 @@ const WatchPage = () => {
           )}
 
           {!trailerVideoId && (
-            <h2 className="text-xl text-center mt-5">
+            <h2 className="text-xl md:text-2xl text-center mt-5">
               No trailers available for{' '}
               <span className="font-bold text-red-600">
                 {content?.title || content?.name}
@@ -180,75 +180,91 @@ const WatchPage = () => {
           )}
         </div>
 
+        {/* separator */}
+        <div className="h-2 w-full bg-[#232323]" aria-hidden="true" />
+
         {/* details */}
-        <div className="flex flex-col md:flex-row items-center justify-between gap-20 max-w-6xl mx-auto">
-          <div>
-            <h2 className="text-5xl font-bold">
-              {content?.title || content?.name}
-            </h2>
+        <div className="py-10 bg-black text-white">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-20">
+            <div className="flex-1 text-center md:text-left">
+              <h2 className="text-4xl md:text-5xl font-extrabold mb-4">
+                {content?.title || content?.name}
+              </h2>
 
-            <p className="mt-2 text-lg">
-              {formatReleaseDate(
-                content?.release_date || content?.first_air_date
-              )}{' '}
-              |{' '}
-              {content?.adult ? (
-                <span className="text-red-600">18+</span>
-              ) : (
-                <span className="text-green-600">PG-13</span>
-              )}
-            </p>
+              <p className="text-lg md:text-xl mb-4">
+                {formatReleaseDate(
+                  content?.release_date || content?.first_air_date
+                )}{' '}
+                |{' '}
+                {content?.adult ? (
+                  <span className="text-red-600">18+</span>
+                ) : (
+                  <span className="text-green-600">PG-13</span>
+                )}
+              </p>
 
-            <p className="mt-4 text-lg">{content?.overview}</p>
+              <p className="text-lg md:text-xl">{content?.overview}</p>
+            </div>
+
+            <div className="flex-1 flex justify-center">
+              <img
+                src={ORIGINAL_IMG_BASE_URL + content?.poster_path}
+                alt="Poster"
+                className="max-h-[600px] rounded-md"
+              />
+            </div>
           </div>
-
-          <img
-            src={ORIGINAL_IMG_BASE_URL + content?.poster_path}
-            alt="Poster"
-            className="max-h-[600px] rounded-md"
-          />
         </div>
+
+        {/* separator */}
+        {similarContent.length > 0 && (
+          <div className="h-2 w-full bg-[#232323]" aria-hidden="true" />
+        )}
 
         {/* similar */}
         {similarContent.length > 0 && (
-          <div className="mt-12 max-w-5xl mx-auto relative">
-            <h3 className="text-3xl font-bold mb-4">Similar Movies/TV Shows</h3>
+          <div className="py-10 bg-black text-white">
+            <div className="relative">
+              <h3 className="text-4xl md:text-5xl font-extrabold mb-4">
+                Similar Movies/TV Shows
+              </h3>
 
-            <div
-              ref={sliderRef}
-              className="flex overflow-x-scroll scrollbar-hide gap-4 pb-4 group"
-            >
-              {similarContent
-                .filter((c) => c.poster_path) // remove items with no poster
-                .map((c) => (
-                  <Link
-                    key={c.id}
-                    to={`/watch/${c.id}`}
-                    className="w-52 flex-none"
-                  >
-                    <img
-                      src={SMALL_IMG_BASE_URL + c.poster_path}
-                      className="w-full h-auto rounded-md"
-                      alt=""
-                    />
-                    <h4 className="mt-2 text-lg font-semibold">
-                      {c.title || c.name}
-                    </h4>
-                  </Link>
-                ))}
+              <div
+                ref={sliderRef}
+                className="flex overflow-x-scroll scrollbar-hide gap-4 pb-4 group"
+              >
+                {similarContent
+                  .filter((c) => c.poster_path) // remove items with no poster
+                  .map((c) => (
+                    <Link
+                      key={c.id}
+                      to={`/watch/${c.id}`}
+                      className="w-52 flex-none"
+                    >
+                      <img
+                        src={SMALL_IMG_BASE_URL + c.poster_path}
+                        className="w-full h-auto rounded-md"
+                        alt=""
+                      />
+                      <h4 className="mt-2 text-lg font-semibold">
+                        {c.title || c.name}
+                      </h4>
+                    </Link>
+                  ))}
 
-              <ChevronRight
-                onClick={scrollRight}
-                className="absolute top-1/2 -translate-y-1/2 right-2 w-8 h-8
+                <ChevronRight
+                  onClick={scrollRight}
+                  className="absolute top-1/2 -translate-y-1/2 right-2 w-8 h-8
                 opacity-0 group-hover:opacity-100 transition-all duration-300 cursor-pointer
                 bg-red-600 text-white rounded-full"
-              />
-              <ChevronLeft
-                onClick={scrollLeft}
-                className="absolute top-1/2 -translate-y-1/2 left-2 w-8 h-8
+                />
+                <ChevronLeft
+                  onClick={scrollLeft}
+                  className="absolute top-1/2 -translate-y-1/2 left-2 w-8 h-8
                 opacity-0 group-hover:opacity-100 transition-all duration-300 cursor-pointer
                 bg-red-600 text-white rounded-full"
-              />
+                />
+              </div>
             </div>
           </div>
         )}

@@ -1,8 +1,46 @@
 <h1 align="center">MERN Netflix Clone 🎬</h1>
 
-![Demo App](/frontend/public/screenshot-for-readme.png)
+<p align="center">
+  <img src="netflix/home.png" alt="Netflix Clone Home Page" width="600"/>
+</p>
 
-About This Course:
+## 📸 Screenshots
+
+### 🏠 Home & Landing Page
+
+<div align="center">
+  <img src="netflix/home.png" alt="Home Page" width="400" style="margin: 10px;"/>
+  <img src="netflix/interpage.png" alt="Landing Page" width="400" style="margin: 10px;"/>
+  <img src="netflix/interpage2.png" alt="Landing Page Section 2" width="400" style="margin: 10px;"/>
+</div>
+
+### 🔐 Authentication
+
+<div align="center">
+  <img src="netflix/register.png" alt="Registration Page" width="400" style="margin: 10px;"/>
+</div>
+
+### 🎬 Movies & TV Shows
+
+<div align="center">
+  <img src="netflix/shows.png" alt="TV Shows Page" width="400" style="margin: 10px;"/>
+</div>
+
+### 🎥 Watch & Trailer
+
+<div align="center">
+  <img src="netflix/trailer.png" alt="Trailer Page" width="400" style="margin: 10px;"/>
+  <img src="netflix/info-similler.png" alt="Movie Info & Similar Content" width="400" style="margin: 10px;"/>
+</div>
+
+### 🔎 Search & History
+
+<div align="center">
+  <img src="netflix/search.png" alt="Search Page" width="400" style="margin: 10px;"/>
+  <img src="netflix/history.png" alt="Search History" width="400" style="margin: 10px;"/>
+</div>
+
+## ✨ Features
 
 - ⚛️ Tech Stack: React.js, Node.js, Express.js, MongoDB, Tailwind
 - 🔐 Authentication with JWT
